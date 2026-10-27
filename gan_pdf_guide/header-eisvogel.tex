@@ -1,0 +1,61 @@
+% ============================================================================
+%  Academic styling for the Eisvogel template (Chinese & Math edition)
+% ============================================================================
+
+\definecolor{DocHeading}{HTML}{234E70}
+\definecolor{DocLink}{HTML}{234E70}
+\addtokomafont{section}{\sffamily\bfseries\color{DocHeading}\fontsize{15}{18}\selectfont}
+\addtokomafont{subsection}{\sffamily\bfseries\color{DocHeading}\fontsize{13.5}{16.5}\selectfont}
+\addtokomafont{subsubsection}{\sffamily\bfseries\color{DocHeading}\fontsize{12}{15}\selectfont}
+\hypersetup{linkcolor=DocLink,urlcolor=DocLink,citecolor=DocLink}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em plus 0.12em minus 0.12em}
+
+% Code blocks and the source appendix
+\IfFileExists{fvextra.sty}{%
+  \usepackage{fvextra}
+  \fvset{breaklines=true,breakanywhere=true,fontsize=\small,baselinestretch=1.0}
+  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,fontsize=\small,baselinestretch=1.0,commandchars=\\\{\}}
+}{%
+  \usepackage{fancyvrb}
+  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{fontsize=\small,commandchars=\\\{\}}
+}
+
+% Compact academic tables
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\footnotesize\linespread{1.10}\selectfont\setlength{\tabcolsep}{3pt}}
+\AtBeginEnvironment{tabular}{\footnotesize\linespread{1.10}\selectfont\setlength{\tabcolsep}{3pt}}
+\renewcommand{\arraystretch}{1.15}
+
+% Figure and table captions
+\AtBeginDocument{%
+  \captionsetup[figure]{%
+    name=图,
+    position=below,
+    font={small,stretch=1.1},
+    labelfont=bf,
+    textfont={color=black},
+    labelsep=quad,
+    justification=centering,
+    skip=6pt
+  }%
+  \captionsetup[table]{%
+    name=表,
+    position=above,
+    font={small,stretch=1.1},
+    labelfont=bf,
+    textfont={color=black},
+    labelsep=quad,
+    justification=centering,
+    skip=6pt
+  }%
+}
+
+% Centered page numbers and a restrained running header
+\AtBeginDocument{%
+  \ifoot*{}%
+  \cfoot*{\thepage}%
+  \ofoot*{}%
+  \addtokomafont{pageheadfoot}{\small\color{black!70}}%
+}
